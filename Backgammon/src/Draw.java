@@ -17,8 +17,8 @@ public class Draw extends JFrame
 	{
 		startGame();
 		// Game and window properties
+		
 		addMouseMotionListener(m);		
-		addMouseListener(m);
 		setTitle("BackGammon Game");
 		setSize(1900, 1000);
 		setResizable(false);
