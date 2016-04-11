@@ -11,14 +11,20 @@ public class MouseEvents extends MouseAdapter
 	public void mouseReleased(MouseEvent e)
 	{
 		setClicked(false);
-		System.out.println("released");
 	}
 
 	@Override
-	public void mousePressed(MouseEvent arg0)
+	public void mousePressed(MouseEvent e)
 	{
-		setClicked(true);
-		System.out.println("clicked");
+		setClicked(true);		
+	}
+	
+	@Override
+	public void mouseMoved(MouseEvent e)
+	{
+		x = e.getX();
+		y = e.getY();
+		System.out.println(x+y);
 	}
 
 	@Override
@@ -26,14 +32,15 @@ public class MouseEvents extends MouseAdapter
 	{
 		x = e.getX();
 		y = e.getY();
+		System.out.println(x+y);
 	}
 
-	public int mouseGetX()
+	public int getX()
 	{
 		return this.x;
 	}
 
-	public int mouseGetY()
+	public int getY()
 	{
 		return this.y;
 	}
