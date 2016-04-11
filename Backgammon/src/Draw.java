@@ -12,12 +12,13 @@ public class Draw extends JFrame
 	private Image dbImage;
 	private Graphics dbGraphics;		
 	private ArrayList<Chip> chip = new ArrayList<Chip>();
-	
+	private MouseEvents m = new MouseEvents();
 	public Draw()
 	{
 		startGame();
 		// Game and window properties
-		addMouseListener(new MouseEvents());
+		addMouseMotionListener(m);		
+		addMouseListener(m);
 		setTitle("BackGammon Game");
 		setSize(1900, 1000);
 		setResizable(false);
@@ -87,7 +88,7 @@ public class Draw extends JFrame
 		}
 		
 		g.drawString("Rolled : ", 900, 990);
-
+		
 		repaint();
 	}
 	
