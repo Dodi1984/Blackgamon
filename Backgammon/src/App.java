@@ -6,6 +6,7 @@ public class App
 	{			
 		Draw draw = new Draw();
 		//test
+		//test2
 	}
 
 }
