@@ -60,10 +60,10 @@ public class Draw extends JFrame
 		}
 
 		// for testing purposes
-		chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-		chip.get(15).setQuadrant(4);
-		chip.get(15).setPos_x(0);
-		chip.get(15).setPos_y(1);
+//		chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
+//		chip.get(15).setQuadrant(4);
+//		chip.get(15).setPos_x(0);
+//		chip.get(15).setPos_y(1);
 
 	}
 
@@ -77,28 +77,13 @@ public class Draw extends JFrame
 
 	public void paintComponent(Graphics g)
 	{
-		g.drawImage(board.getBi(), 0, 0, 1900, 1000, null);
-		// g.drawImage(chip.get(0).getBi(), chip.get(0).getPos_x(),
-		// chip.get(0).getPos_y(), 75, 75, null);
+		g.drawImage(board.getBi(), 0, 0, 1900, 1000, null);		
 
 		for (int i = 0; i < chip.size(); i++)
 		{
 			g.drawImage(chip.get(i).getBi(), chip.get(i).getPos_x(), chip.get(i).getPos_y(), 75, 75, null);
-
-			if (i == 15)
-			{
-				if (mouse.isClicked() && (mouse.getX() + 20 > chip.get(i).getPos_x())
-						&& (mouse.getY() + 20 > chip.get(i).getPos_y()))
-				{
-//					chip.get(i).setPos_x(mouse.getX());
-//					chip.get(i).setPos_y(mouse.getY());
-					g.drawImage(chip.get(i).getBi(), mouse.getX(), mouse.getY(), 75, 75, null);
-					System.out.println("intra");
-				}
-			}
-
 		}
-
+		// trebuie sa fac variabile care sa imi indice daca mouse-ul este in apropierea unui pull		
 		g.drawString("Rolled : ", 900, 990);
 
 		repaint();

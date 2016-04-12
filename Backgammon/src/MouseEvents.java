@@ -3,7 +3,7 @@ import java.awt.event.MouseEvent;
 
 public class MouseEvents extends MouseAdapter
 {
-	private boolean isClicked = false;
+	private boolean isMoved = false;
 	private int x;
 	private int y;
 
@@ -22,7 +22,7 @@ public class MouseEvents extends MouseAdapter
 	@Override
 	public void mouseMoved(MouseEvent e)
 	{
-		x = e.getX();
+		x = e.getX();									// sets X and Y if mouse not pressed
 		y = e.getY();
 		System.out.println(x+y);
 	}
@@ -30,7 +30,7 @@ public class MouseEvents extends MouseAdapter
 	@Override
 	public void mouseDragged(MouseEvent e)
 	{
-		x = e.getX();
+		x = e.getX();									// sets X and Y if mouse is pressed
 		y = e.getY();
 		System.out.println(x+y);
 	}
@@ -47,12 +47,12 @@ public class MouseEvents extends MouseAdapter
 
 	public boolean isClicked()
 	{
-		return isClicked;
+		return isMoved;
 	}
 
 	public void setClicked(boolean isClicked)
 	{
-		this.isClicked = isClicked;
+		this.isMoved = isClicked;
 	}
 
 }
