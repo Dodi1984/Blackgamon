@@ -11,12 +11,15 @@ public class Draw extends JFrame
 	private Board board = new Board(1, 1, BufferedImage.TYPE_INT_ARGB);
 	private Image dbImage;
 	private Graphics dbGraphics;
-	private ArrayList<Chip> chip = new ArrayList<Chip>();
-	private MouseEvents mouse = new MouseEvents();
+	public static ArrayList<Chip> chip = new ArrayList<Chip>();
+	public static MouseEvents mouse = new MouseEvents();
+	private Game game = new Game();
 
 	public Draw()
 	{
 		startGame();
+		// starting game thread
+		game.start();
 		// Game and window properties
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
@@ -60,10 +63,10 @@ public class Draw extends JFrame
 		}
 
 		// for testing purposes
-//		chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-//		chip.get(15).setQuadrant(4);
-//		chip.get(15).setPos_x(0);
-//		chip.get(15).setPos_y(1);
+		// chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
+		// chip.get(15).setQuadrant(4);
+		// chip.get(15).setPos_x(0);
+		// chip.get(15).setPos_y(1);
 
 	}
 
@@ -77,18 +80,14 @@ public class Draw extends JFrame
 
 	public void paintComponent(Graphics g)
 	{
-		g.drawImage(board.getBi(), 0, 0, 1900, 1000, null);		
+		g.drawImage(board.getBi(), 0, 0, 1900, 1000, null);
 
 		for (int i = 0; i < chip.size(); i++)
 		{
 			g.drawImage(chip.get(i).getBi(), chip.get(i).getPos_x(), chip.get(i).getPos_y(), 75, 75, null);
 		}
-		// trebuie sa fac variabile care sa imi indice daca mouse-ul este in apropierea unui pull		
 		g.drawString("Rolled : ", 900, 990);
 
 		repaint();
 	}
-
 }
-// o sa trebuiasca sa iterez prin obiecte si sa verific pozitiile de x si de y
-// cele mai apropiate de locul in care fac click cu mouse-ul
