@@ -39,39 +39,39 @@ public class Draw extends JFrame
 		{
 			if (i <= 4)
 			{
-				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
+				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
 				chip.get(i).preSetPos_x(0);
 				chip.get(i).preSetPos_y(i + 1);
-			} 
-			else if (i <= 6)
+			} else if (i <= 6)
 			{
-				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
+				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
 				chip.get(i).preSetPos_x(11);
 				chip.get(i).preSetPos_y(i - 4);
 			}
-//			else if (i <= 11)
-//			{
-//				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
-//				chip.get(i).preSetPos_x(13);
-//				chip.get(i).preSetPos_y(i - 6);
-//			} 
-//			else if (i <= 14)
-//			{
-//				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
-//				chip.get(i).preSetPos_x(1);
-//				chip.get(i).preSetPos_y(i - 11);
-//			}
+			// else if (i <= 11)
+			// {
+			// chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
+			// chip.get(i).preSetPos_x(13);
+			// chip.get(i).preSetPos_y(i - 6);
+			// }
+			// else if (i <= 14)
+			// {
+			// chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
+			// chip.get(i).preSetPos_x(1);
+			// chip.get(i).preSetPos_y(i - 11);
+			// }
 		}
 
 		// for testing purposes
-//		 chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));		 
-//		 chip.get(7).preSetPos_x(2);
-//		 chip.get(7).preSetPos_y(1);
+		chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
+		chip.get(7).preSetPos_x(2);
+		chip.get(7).preSetPos_y(1);
 
 	}
 
 	public void paint(Graphics g)
 	{
+
 		dbImage = createImage(getWidth(), getHeight());
 		dbGraphics = dbImage.getGraphics();
 		paintComponent(dbGraphics);
@@ -81,7 +81,7 @@ public class Draw extends JFrame
 	public void paintComponent(Graphics g)
 	{
 		g.drawImage(board.getBi(), 0, 0, 1900, 1000, null);
-
+		
 		for (int i = 0; i < chip.size(); i++)
 		{
 			g.drawImage(chip.get(i).getBi(), chip.get(i).getPos_x(), chip.get(i).getPos_y(), 75, 75, null);

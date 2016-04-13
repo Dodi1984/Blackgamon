@@ -9,11 +9,14 @@ public class Chip
 	private int pos_y;
 	private boolean selected = false;
 	private boolean isSelectable = false;
+	private boolean isWhite;
+	
 
 	private BufferedImage bi;
 
 	public Chip(int width, int height, int imageType, boolean isWhite)
 	{
+		this.isWhite=isWhite;
 		this.bi = new BufferedImage(width, height, imageType);
 		try
 		{
