@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.concurrent.Exchanger;
 
 import javax.swing.JFrame;
 
@@ -13,6 +14,7 @@ public class Draw extends JFrame
 	private Graphics dbGraphics;
 	public static ArrayList<Chip> chip = new ArrayList<Chip>();
 	public static MouseEvents mouse = new MouseEvents();
+	final Exchanger<String> exchanger = new Exchanger<String>();
 	private Game game = new Game();
 
 	public Draw()
@@ -33,40 +35,35 @@ public class Draw extends JFrame
 	public void startGame()
 	{
 		// initial placement for white Chips
-		for (int i = 0; i < 15; i++)
-		{
-			if (i <= 4)
-			{
-				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-				chip.get(i).setQuadrant(1);
-				chip.get(i).setPos_x(0);
-				chip.get(i).setPos_y(i + 1);
-			} else if (i <= 6)
-			{
-				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-				chip.get(i).setQuadrant(2);
-				chip.get(i).setPos_x(5);
-				chip.get(i).setPos_y(i - 4);
-			} else if (i <= 11)
-			{
-				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-				chip.get(i).setQuadrant(3);
-				chip.get(i).setPos_x(5);
-				chip.get(i).setPos_y(i - 6);
-			} else if (i <= 14)
-			{
-				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-				chip.get(i).setQuadrant(4);
-				chip.get(i).setPos_x(1);
-				chip.get(i).setPos_y(i - 11);
-			}
-		}
+//		for (int i = 0; i < 15; i++)
+//		{
+//			if (i <= 4)
+//			{
+//				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
+//				chip.get(i).preSetPos_x(0);
+//				chip.get(i).preSetPos_y(i + 1);
+//			} else if (i <= 6)
+//			{
+//				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
+//				chip.get(i).preSetPos_x(5);
+//				chip.get(i).preSetPos_y(i - 4);
+//			} else if (i <= 11)
+//			{
+//				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
+//				chip.get(i).preSetPos_x(5);
+//				chip.get(i).preSetPos_y(i - 6);
+//			} else if (i <= 14)
+//			{
+//				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));				
+//				chip.get(i).preSetPos_x(1);
+//				chip.get(i).preSetPos_y(i - 11);
+//			}
+//		}
 
 		// for testing purposes
-		// chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-		// chip.get(15).setQuadrant(4);
-		// chip.get(15).setPos_x(0);
-		// chip.get(15).setPos_y(1);
+		 chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));		 
+		 chip.get(0).preSetPos_x(0);
+		 chip.get(0).preSetPos_y(2);
 
 	}
 

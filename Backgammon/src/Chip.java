@@ -5,12 +5,11 @@ import javax.imageio.ImageIO;
 
 public class Chip
 {
-	private int quadrant;
 	private int pos_x;
 	private int pos_y;
 	private boolean selected = false;
 	private boolean isSelectable = false;
-		
+
 	private BufferedImage bi;
 
 	public Chip(int width, int height, int imageType, boolean isWhite)
@@ -39,22 +38,8 @@ public class Chip
 	}
 
 	public void setPos_x(int pos_x)
-	{		 
-		switch (this.quadrant)
-		{
-		case 1:			
-			this.pos_x = Board.firstQuadrantPositions[pos_x][0];
-			break;
-		case 2:
-			this.pos_x = Board.secondQuadrantPositions[pos_x][0];
-			break;
-		case 3:
-			this.pos_x = Board.thirdQuadrantPositions[pos_x][0];
-			break;
-		case 4:			
-			this.pos_x = Board.fourthQuadrantPositions[pos_x][0];
-			break;
-		}
+	{
+		this.pos_x = pos_x;
 	}
 
 	public int getPos_y()
@@ -64,21 +49,18 @@ public class Chip
 
 	public void setPos_y(int pos_y)
 	{
-		switch (this.quadrant)
-		{
-		case 1:			
-			this.pos_y = Board.firstQuadrantPositions[0][pos_y];
-			break;
-		case 2:
-			this.pos_y = Board.secondQuadrantPositions[0][pos_y];
-			break;
-		case 3:
-			this.pos_y = Board.thirdQuadrantPositions[0][pos_y];
-			break;
-		case 4:
-			this.pos_y = Board.fourthQuadrantPositions[0][pos_y];
-			break;
-		}
+		this.pos_y = pos_y;
+	}
+
+	public void preSetPos_x(int pos_x)
+	{
+		this.pos_x = Board.boardLane[pos_x][0];		
+	}
+
+	public void preSetPos_y(int pos_y)
+	{
+		this.pos_y = Board.boardLane[0][pos_y];
+
 	}
 
 	public boolean isSelected()
@@ -110,16 +92,4 @@ public class Chip
 	{
 		this.bi = bi;
 	}
-
-	
-	public int getQuadrant()
-	{
-		return quadrant;
-	}
-
-	public void setQuadrant(int quadrant)
-	{
-		this.quadrant = quadrant;
-	}
-
 }

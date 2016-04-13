@@ -27,6 +27,7 @@ public class MouseEvents extends MouseAdapter
 	{
 		x = e.getX();									// sets X and Y if mouse not pressed
 		y = e.getY();		
+		System.out.println(x + y);
 	}
 
 	@Override
