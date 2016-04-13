@@ -16,23 +16,20 @@ public class MouseEvents extends MouseAdapter
 	@Override
 	public void mousePressed(MouseEvent e)
 	{
-		setClicked(true);	
-		System.out.println(x +" , "+ y);
-		
-		
+		setClicked(true);
 	}
-	
+
 	@Override
 	public void mouseMoved(MouseEvent e)
 	{
-		x = e.getX();									// sets X and Y if mouse not pressed
-		y = e.getY();		
+		x = e.getX(); // sets X and Y if mouse not pressed
+		y = e.getY();
 	}
 
 	@Override
 	public void mouseDragged(MouseEvent e)
 	{
-		x = e.getX();									// sets X and Y if mouse is pressed
+		x = e.getX(); // sets X and Y if mouse is pressed
 		y = e.getY();
 	}
 

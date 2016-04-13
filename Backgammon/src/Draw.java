@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.concurrent.Exchanger;
 
 import javax.swing.JFrame;
@@ -22,6 +23,7 @@ public class Draw extends JFrame
 		startGame();
 		// starting game thread
 		game.start();
+		game.setBoard(board);
 		// Game and window properties
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
@@ -35,7 +37,7 @@ public class Draw extends JFrame
 	public void startGame()
 	{
 		// initial placement for white Chips
-		for (int i = 0; i < 15; i++)
+		for (int i = 0; i < 30; i++)
 		{
 			if (i <= 4)
 			{
@@ -59,11 +61,33 @@ public class Draw extends JFrame
 				chip.get(i).preSetPos(19, i - 11);
 
 			}
+			// initial placement for Black chips
+			else if (i <= 19)
+			{
+				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
+				chip.get(i).preSetPos(23, i - 14);
+			}
+			else if (i <= 22)
+			{
+				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
+				chip.get(i).preSetPos(4, i - 19);
+			}
+			else if (i <= 27)
+			{
+				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
+				chip.get(i).preSetPos(6, i - 22);
+			}
+			else if (i <= 29)
+			{
+				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
+				chip.get(i).preSetPos(12, i - 27);
+			}
 		}
-
+		// initial placement for Black chips
+		
 		// for testing purposes
-		// chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-		// chip.get(7).preSetPos(13 , 1);
+//		 chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
+//		 chip.get(15).preSetPos(13 , 1);
 
 	}
 
@@ -84,8 +108,8 @@ public class Draw extends JFrame
 		{
 			g.drawImage(chip.get(i).getBi(), chip.get(i).getPos_x(), chip.get(i).getPos_y(), 75, 75, null);
 		}
-		g.drawString("Rolled : ", 900, 990);
-
+		g.drawString("Rolled : ", 900, 990);		
+		
 		repaint();
 	}
 }

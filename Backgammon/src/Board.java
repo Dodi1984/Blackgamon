@@ -1,5 +1,7 @@
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.imageio.ImageIO;
 
 public class Board
@@ -7,9 +9,9 @@ public class Board
 	private boolean isTaken;
 
 	// positions
-	public static int[][] boardLane = new int[24][12];
+	public static int[][] boardLane = new int[24][6];
 	private BufferedImage bi;
-
+	
 	public Board(int width, int height, int imageType)
 	{
 		this.bi = new BufferedImage(width, height, imageType);
