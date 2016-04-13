@@ -54,7 +54,7 @@ public class Chip
 
 	public void preSetPos_x(int pos_x)
 	{
-		this.pos_x = Board.boardLane[pos_x][0];		
+		this.pos_x = Board.boardLane[pos_x][0];				
 	}
 
 	public void preSetPos_y(int pos_y)
