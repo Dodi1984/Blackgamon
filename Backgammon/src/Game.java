@@ -10,6 +10,7 @@ public class Game extends Thread
 
 		while (true)
 		{
+			//
 			// loop
 			mouseX = Draw.mouse.getX();
 			mouseY = Draw.mouse.getY();
