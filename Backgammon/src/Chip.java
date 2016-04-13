@@ -7,6 +7,8 @@ public class Chip
 {
 	private int pos_x;
 	private int pos_y;
+	private int relPos_x;
+	private int relPos_y;
 	private boolean selected = false;
 	private boolean isSelectable = false;
 	private boolean isWhite;
@@ -55,15 +57,10 @@ public class Chip
 		this.pos_y = pos_y;
 	}
 
-	public void preSetPos_x(int pos_x)
+	public void preSetPos(int pos_x, int pos_y)
 	{
-		this.pos_x = Board.boardLane[pos_x][0];				
-	}
-
-	public void preSetPos_y(int pos_y)
-	{
-		this.pos_y = Board.boardLane[0][pos_y];
-
+		this.pos_x = Board.boardLane[pos_x][0];		
+		this.pos_y = Board.boardLane[pos_x][pos_y];
 	}
 
 	public boolean isSelected()
