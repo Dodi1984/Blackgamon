@@ -12,22 +12,50 @@ public class Chip
 	private boolean selected = false;
 	private boolean isSelectable = false;
 	private boolean isWhite;
-	
+	private boolean isOut = false;
+	private boolean isTaken = false;
+
+	public boolean isOut()
+	{
+		return isOut;
+	}
+
+	public void setOut(boolean isOut)
+	{
+		this.isOut = isOut;
+	}
+
+	public boolean isTaken()
+	{
+		return isTaken;
+	}
+
+	public void setTaken(boolean isTaken)
+	{
+		this.isTaken = isTaken;
+	}
+
+	public boolean isWhite()
+	{
+		return isWhite;
+	}
 
 	private BufferedImage bi;
 
 	public Chip(int width, int height, int imageType, boolean isWhite)
 	{
-		this.isWhite=isWhite;
+		this.isWhite = isWhite;
 		this.bi = new BufferedImage(width, height, imageType);
 		try
 		{
 			if (isWhite)
 			{
 				this.bi = ImageIO.read(getClass().getResourceAsStream("/pul2.png"));
+				this.isWhite=true;
 			} else
 			{
 				this.bi = ImageIO.read(getClass().getResourceAsStream("/pul1.png"));
+				this.isWhite=false;
 			}
 
 		} catch (IOException e)
@@ -60,9 +88,29 @@ public class Chip
 	public void preSetPos(int pos_x, int pos_y)
 	{
 		this.pos_x = Board.boardLane[pos_x][0];
-		Board.positions[pos_x][0]=true;
+		relPos_x = pos_x;
 		this.pos_y = Board.boardLane[pos_x][pos_y];
-		Board.positions[pos_x][pos_y]=true;
+		relPos_y = pos_y;
+	}
+
+	public int getRelPos_x()
+	{
+		return relPos_x;
+	}
+
+	public void setRelPos_x(int relPos_x)
+	{
+		this.relPos_x = relPos_x;
+	}
+
+	public int getRelPos_y()
+	{
+		return relPos_y;
+	}
+
+	public void setRelPos_y(int relPos_y)
+	{
+		this.relPos_y = relPos_y;
 	}
 
 	public boolean isSelected()

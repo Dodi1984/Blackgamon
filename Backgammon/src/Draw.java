@@ -22,7 +22,7 @@ public class Draw extends JFrame
 		startGame();
 		// starting game thread
 		game.start();
-		game.setBoard(board);
+		//game.setBoard(board);
 		// Game and window properties
 		addMouseListener(mouse);
 		addMouseMotionListener(mouse);
