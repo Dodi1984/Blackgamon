@@ -2,7 +2,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.concurrent.Exchanger;
 
 import javax.swing.JFrame;
@@ -39,7 +38,7 @@ public class Draw extends JFrame
 		// initial placement for white Chips
 		for (int i = 0; i < 30; i++)
 		{
-			if (i <= 4)
+			if (i <= 1)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
 				chip.get(i).preSetPos(0, i + 1);
@@ -48,46 +47,46 @@ public class Draw extends JFrame
 			else if (i <= 6)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-				chip.get(i).preSetPos(11, i - 4);
+				chip.get(i).preSetPos(11, i - 1);
 			}
-			else if (i <= 11)
+			else if (i <= 9)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-				chip.get(i).preSetPos(17, i - 6);
+				chip.get(i).preSetPos(16, i - 6);
 			}
 			else if (i <= 14)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, true));
-				chip.get(i).preSetPos(19, i - 11);
+				chip.get(i).preSetPos(18, i - 9);
 
 			}
-			// initial placement for Black chips
-			else if (i <= 19)
+//			// initial placement for Black chips
+			else if (i <= 16)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
 				chip.get(i).preSetPos(23, i - 14);
 			}
-			else if (i <= 22)
+			else if (i <= 21)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
-				chip.get(i).preSetPos(4, i - 19);
+				chip.get(i).preSetPos(5, i - 16);
 			}
-			else if (i <= 27)
+			else if (i <= 24)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
-				chip.get(i).preSetPos(6, i - 22);
+				chip.get(i).preSetPos(7, i - 21);
 			}
 			else if (i <= 29)
 			{
 				chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
-				chip.get(i).preSetPos(12, i - 27);
+				chip.get(i).preSetPos(12, i - 24);
 			}
 		}
 		// initial placement for Black chips
 		
 		// for testing purposes
-//		 chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
-//		 chip.get(15).preSetPos(13 , 1);
+//		chip.add(new Chip(1, 1, BufferedImage.TYPE_INT_ARGB, false));
+//		chip.get(0).preSetPos(20, 5);
 
 	}
 

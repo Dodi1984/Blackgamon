@@ -59,8 +59,10 @@ public class Chip
 
 	public void preSetPos(int pos_x, int pos_y)
 	{
-		this.pos_x = Board.boardLane[pos_x][0];		
+		this.pos_x = Board.boardLane[pos_x][0];
+		Board.positions[pos_x][0]=true;
 		this.pos_y = Board.boardLane[pos_x][pos_y];
+		Board.positions[pos_x][pos_y]=true;
 	}
 
 	public boolean isSelected()
