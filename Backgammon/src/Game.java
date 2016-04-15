@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Game extends Thread
 {
 	private int mouseX;
@@ -5,13 +7,30 @@ public class Game extends Thread
 	private int chipInitialX;
 	private int chipInitialY;
 	private boolean mousePressed = false;
-	public static int[][] relPositions = new int[24][6];
-
+	private boolean[][] relPositions = new boolean[24][6];
+	private Chip c;
+	private boolean aiTurn=false;
+	Dice dice = new Dice();
+	private int dice1;
+	private int dice2;
+	Random rand = new Random();
+	private int random;
+	private int max = 29;
+	private int min = 15;
+	public int getRandomChip()
+	{
+		random = rand.nextInt(max-min)+min;
+		return this.random;
+	}
 	public void run()
 	{
-
+		setInitialRelativePositions();
 		while (true)
 		{
+			dice1=dice.getRandomDice();
+			dice2=dice.getRandomDice();
+			int randomChip1 = getRandomChip();
+			int randomChip2 = getRandomChip();
 			//
 			// loop
 			mouseX = Draw.mouse.getX();
@@ -23,13 +42,19 @@ public class Game extends Thread
 			{
 				if (mousePressed
 						&& ((mouseX < Draw.chip.get(i).getPos_x() + 78) && (mouseX > Draw.chip.get(i).getPos_x()))
-						&& Draw.chip.get(i).isWhite())
+						&& Draw.chip.get(i).isWhite()
+						&& aiTurn==false)
 				{
 					if (mousePressed
 							&& ((mouseY < Draw.chip.get(i).getPos_y() + 78) && (mouseY > Draw.chip.get(i).getPos_y())))
 					{
-						chipInitialX = Draw.chip.get(i).getRelPos_x();
-						chipInitialY = Draw.chip.get(i).getRelPos_y();
+						chipInitialX = Draw.chip.get(i).getRelPos_x(); // read
+						chipInitialY = Draw.chip.get(i).getRelPos_y();	// initial
+																		// x and
+																		// y
+																		// relative
+																		// positions
+						
 						while (mousePressed)
 						{
 							mousePressed = Draw.mouse.isClicked();
@@ -55,31 +80,65 @@ public class Game extends Thread
 									{
 										if (chipInitialX <= j) // to go only
 																// forward
-										{
-											Draw.chip.get(i).preSetPos(j, j2);
-											Draw.chip.get(i).setRelPos_x(j);
-
-										} else
+										{											
+											for (int k = 1; k <= 5; k++)
+											{												
+												if (!relPositions[j][k])// check if the place is taken, if not he will enter
+												{
+																									
+														Draw.chip.get(i).preSetPos(j, k);		// to jump in place
+														Draw.chip.get(i).setRelPos_x(j);
+														Draw.chip.get(i).setRelPos_y(k);
+														relPositions[j][k] = true;
+														relPositions[chipInitialX][chipInitialY] = false;
+														k=6;
+														//setAiTurn(true);			//enables AI
+												}
+												else  // if it`s taken he will 
+												{														
+													
+												}
+											}
+										} 
+										else
 										{
 											Draw.chip.get(i).preSetPos(chipInitialX, chipInitialY);
 										}
-
 									}
 								}
 							}
 						}
-						// can go only in one direction
 					}
 				}
 			}
-
 			// loop
+			if (aiTurn)
+			{				
+				Draw.chip.get(randomChip1).preSetPos(Draw.chip.get(randomChip1).getRelPos_x()+dice1, 1);
+				Draw.chip.get(randomChip2).preSetPos(Draw.chip.get(randomChip2).getRelPos_x()+dice2, 1);				
+				setAiTurn(false);
+				
+			}
 		}
 	}
 
-	public void setChipState()
+	public void setInitialRelativePositions()
 	{
-
+		for (int i = 0; i < Draw.chip.size(); i++)
+		{
+			relPositions[Draw.chip.get(i).getRelPos_x()][Draw.chip.get(i).getRelPos_y()] = true;
+		}
 	}
+
+	public boolean isAiTurn()
+	{
+		return aiTurn;
+	}
+
+	public void setAiTurn(boolean aiTurn)
+	{
+		this.aiTurn = aiTurn;
+	}
+
 
 }
